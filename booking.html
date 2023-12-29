@@ -1,0 +1,148 @@
+<!DOCTYPE html> 
+ <html lang="en"> 
+ <head> 
+     <meta charset="UTF-8"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+     <title>flight booking</title> 
+     <link rel="stylesheet" href="style.css"> 
+  
+     <link rel="preconnect" href="https://fonts.googleapis.com"> 
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap" rel="stylesheet"> 
+  
+  
+     <link rel="stylesheet" 
+     href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"> 
+ </head> 
+ <body> 
+  
+     <header> 
+         <a href="#" class="logo"><img src="tripease logo  finall.png" alt=""></a> 
+  
+         <ul class="navmenu"> 
+             <li><a href="index.html">Home</a></li> 
+<li><a href="booking.html">Flights</a></li>             <li><a href="index.html#destination">Destinations</a></li> 
+             <li><a href="testimonials.html">Testimonials</a></li> 
+             <li><a href="bookingdetails.html">Availability</a></li> 
+         </ul> 
+  
+         <div class="btn-icon"> 
+             <a href="signup.html" class="nav-btn">Sign Up</a> 
+             <div class="bx bx-menu" id="menu-icon"></div> 
+         </div> 
+     </header> 
+
+  
+    <title>Flight Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="date"],
+        input[type="time"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Flight Booking</h2>
+        <form action="process_booking.php" method="POST">
+            <div>
+                <label for="departureDate">Date of Departure:</label>
+                <input type="date" id="departureDate" name="departureDate" required>
+            </div>
+            <div>
+                <label for="departureTime">Time of Departure:</label>
+                <input type="time" id="departureTime" name="departureTime" required>
+            </div>
+            <div>
+                <label for="destination">Destination:</label>
+                <input type="text" id="destination" name="destination" required>
+            </div>
+          <div>
+<label for="flightCompany">Select The Class:</label>
+                <select id="flightCompany" name="flightCompany" required>
+                    <option value="PassengerPLane">PassengerPLane</option>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value="PrivateJet">PrivateJet</option>
+                  <option value="AirBUS">AirBUS</option>
+                  <option value="Economy">Economy</option>
+                  <option value="BusinessClass">BusinessClass</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+          
+            <div>
+                <label for="flightCompany">Select Flight Company:</label>
+                <select id="flightCompany" name="flightCompany" required>
+                    <option value="Air India">Air India</option>
+                    <option value="Kingfisher">Kingfisher</option>
+                    <option value="Jet Airways">Jet Airways</option>
+                  <option value="US Airways">US Airways </option>
+                  <option value="Pak Airways">Pak Airways</option>
+                  <option value="Mexico Airways">Mexico Airways</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div>
+                <button type="submit">Book Flight</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

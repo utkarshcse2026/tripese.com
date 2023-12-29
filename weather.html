@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripEase.com - Real-Time Weather</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .logo img {
+            width: 100px;
+        }
+
+        .navmenu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .navmenu li {
+            margin-right: 20px;
+        }
+
+        .navmenu li:last-child {
+            margin-right: 0;
+        }
+
+        .navmenu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        .container h2 {
+            margin-bottom: 20px;
+        }
+
+        .container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .container button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #weatherInfo {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo"><img src="tripease logo  finall.png" alt=""></a>
+    <ul class="navmenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="booking.html">Flights</a></li>
+        <li><a href="index.html#destination">Destinations</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="bookingdetails.html">Availability</a></li>
+    </ul>
+    <div class="btn-icon">
+        <a href="signup.html" class="nav-btn">Sign Up</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
+</header>
+
+<div class="container">
+    <h2>Real-Time Weather</h2>
+    <p>Enter your location below to get the current weather:</p>
+    <input type="text" id="locationInput" placeholder="Enter a city">
+    <button onclick="getWeather()">Get Weather</button>
+    <div id="weatherInfo"></div>
+</div>
+
+<script>
+    function getWeather() {
+        const apiKey = 'be33ab15057392c66315b67f6664098e'; // Replace with your API key
+        const location = document.getElementById('locationInput').value;
+        const weatherInfo = document.getElementById('weatherInfo');
+
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`)
+            .then(response => response.json())
+            .then(data => {
+                const temperature = data.main.temp;
+                const description = data.weather[0].description;
+                const city = data.name;
+
+                const weatherHtml = `<p>Current weather in ${city}: ${temperature}°C, ${description}</p>`;
+                weatherInfo.innerHTML = weatherHtml;
+            })
+            .catch(error => {
+                weatherInfo.innerHTML = `<p>Unable to fetch weather data. Please check your location.</p>`;
+                console.error(error);
+            });
+    }
+</script>
+
+</body>
+</html>

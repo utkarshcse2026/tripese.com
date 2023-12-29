@@ -1,0 +1,89 @@
+<!DOCTYPE html> 
+ <html lang="en"> 
+ <head> 
+     <meta charset="UTF-8"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+     <title>TripEase.com</title> 
+     <link rel="stylesheet" href="style.css"> 
+  
+     <link rel="preconnect" href="https://fonts.googleapis.com"> 
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap" rel="stylesheet"> 
+  
+  
+     <link rel="stylesheet" 
+     href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"> 
+ </head> 
+ <body> 
+  
+     <header> 
+         <a href="index.html" class="logo"><img src="tripease logo  finall.png" alt=""></a> 
+  
+         <ul class="navmenu"> 
+             <li><a href="index.html">Home</a></li> 
+<li><a href="booking.html">Flights</a></li>             <li><a href="index.html#destination">Destinations</a></li> 
+             <li><a href="testimonials.html">Testimonials</a></li> 
+             <li><a href="bookingdetails.html">Availability</a></li> 
+         </ul> 
+  
+         <div class="btn-icon"> 
+             <a href="signup.html" class="nav-btn">Sign Up</a> 
+             <div class="bx bx-menu" id="menu-icon"></div> 
+         </div> 
+     </header> 
+    <title>Tourism Guide</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    &nbsp;
+        <h1>Tourism Guide & Information</h1>
+    
+    
+    <section id="destinations">
+        <h2>Popular Destinations</h2>
+        <ul>
+            <li><a href="https://www.cometoparis.com/paris-guide/what-to-do-in-paris-s938">Paris</a></li>
+            <li><a href="https://www.tripadvisor.in/Attractions-g293916-Activities-Bangkok.html">Bangkok</a></li>
+            <li><a href="https://www.tripadvisor.in/Attractions-g294217-Activities-Hong_Kong.html">Hongkong</a></li>
+        </ul>
+    </section>
+
+    <section id="search">
+        <h2>Search for Destinations</h2>
+        <input type="text" id="searchInput" placeholder="Enter a destination...">
+        <button onclick="searchDestinations()">Search</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Tourism Guide</p>
+    </footer>
+<script>
+    function searchDestinations() {
+    const searchInput = document.getElementById("searchInput").value.toLowerCase();
+
+    // Replace 'YOUR_API_KEY' with your actual API key from Google
+    const apiKey = '4b77f84eda6dad0d3145bf2a6ec15afc';
+
+    // Use the Google Places API to search for destinations
+    fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchInput}&key=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'OK') {
+                const destinations = data.results.map(result => result.name);
+                if (destinations.length === 0) {
+                    alert("No matching destinations found.");
+                } else {
+                    alert("Matching Destinations: " + destinations.join(", "));
+                }
+            } else {
+                alert("Error: " + data.status);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An error occurred while searching for destinations.");
+        });
+}
+</script>
+</body>
+</html>

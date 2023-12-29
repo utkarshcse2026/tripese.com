@@ -1,0 +1,147 @@
+<!DOCTYPE html> 
+ <html lang="en"> 
+ <head> 
+     <meta charset="UTF-8"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+     <title>TripEase.com</title> 
+     <link rel="stylesheet" href="style.css"> 
+  
+     <link rel="preconnect" href="https://fonts.googleapis.com"> 
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap" rel="stylesheet"> 
+  
+  
+     <link rel="stylesheet" 
+     href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"> 
+ </head> 
+ <body> 
+  
+     <header> 
+         <a href="#" class="logo"><img src="tripease logo  finall.png" alt=""></a> 
+  
+         <ul class="navmenu"> 
+             <li><a href="index.html">Home</a></li> 
+<li><a href="booking.html">Flights</a></li>             <li><a href="index.html#destination">Destinations</a></li> 
+             <li><a href="testimonials.html">Testimonials</a></li> 
+             <li><a href="bookingdetails.html">Availability</a></li> 
+         </ul> 
+  
+         <div class="btn-icon"> 
+             <a href="signup.html" class="nav-btn">Sign Up</a> 
+             <div class="bx bx-menu" id="menu-icon"></div> 
+         </div> 
+     </header> 
+    <title>Flight Availability</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        #booking-form {
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #flights-list {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="booking-form">
+        <h2>Available Flights</h2>
+        <label for="destination">Select Destination:</label>
+        <select id="destination">
+            <option value="new-york">New York</option>
+            <option value="los-angeles">Los Angeles</option>
+            <option value="miami">Miami</option>
+            <option value="chicago">Chicago</option>
+        </select>
+        <button onclick="searchFlights()">Search Flights</button>
+    </div>
+    <div id="flights-list">
+        <h2>Result</h2>
+        <ul id="flight-results">
+        </ul>
+    </div>
+    <script>
+        const flightData = {
+            'new-york': [
+                { flightNumber: 'NY101', destination: 'New York', price: 300 },
+                { flightNumber: 'NY102', destination: 'New York', price: 350 },
+            ],
+            'los-angeles': [
+                { flightNumber: 'LA201', destination: 'Los Angeles', price: 400 },
+                { flightNumber: 'LA202', destination: 'Los Angeles', price: 450 },
+            ],
+            'miami': [
+                { flightNumber: 'MI301', destination: 'Miami', price: 250 },
+                { flightNumber: 'MI302', destination: 'Miami', price: 280 },
+            ],
+            'chicago': [
+                { flightNumber: 'CH401', destination: 'Chicago', price: 320 },
+                { flightNumber: 'CH402', destination: 'Chicago', price: 360 },
+            ],
+        };
+
+        function searchFlights() {
+            const destination = document.getElementById('destination').value;
+            const flightResults = document.getElementById('flight-results');
+            flightResults.innerHTML = '';
+
+            if (flightData[destination]) {
+                flightData[destination].forEach(flight => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `Flight ${flight.flightNumber} to ${flight.destination} - Price: $${flight.price}`;
+                    flightResults.appendChild(listItem);
+                });
+            } else {
+                const listItem = document.createElement('li');
+                listItem.textContent = 'No flights available for the selected destination.';
+                flightResults.appendChild(listItem);
+            }
+        }
+    </script>
+</body>
+</html>
